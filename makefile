@@ -1,10 +1,10 @@
-build: tlsf.c tlsf.h main.c
-	@echo "Fine"
+build: libslsf
+	gcc main.c tlsflink.c libtlsf.a -o main
 
 libslsf: clean tlsf.c tlsf.h 
-	gcc -c tlsf.c -o tlsf.o
+	gcc -c tlsf.c
 	ar rcs libtlsf.a tlsf.o
-	gcc -shared -o libtlsf.so tlsf.o
+	gcc tlsf.o -o libtlsf.so  -shared
 
 clean:
-	rm -f tlsf.o libtlsf.a libtlsf.so
+	rm -f tlsf.o libtlsf.a libtlsf.so main
