@@ -10,6 +10,9 @@ void __attribute__((noinline)) my_init() {
 }
 
 void * __attribute__((noinline)) my_malloc(size_t size) {
+    if (size > 4096) {
+        return NULL; // 拒绝
+    }
     return tlsf_malloc(tlsf_instance, size);
 }
 
